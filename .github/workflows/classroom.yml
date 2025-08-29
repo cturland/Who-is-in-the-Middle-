@@ -27,11 +27,11 @@ jobs:
           5
           8
         expected-output: "8"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
-    # --- Distinct values: robust permutation coverage (2,99,50 -> 50) ---
+    # --- Distinct values (permutations around 2,50,99) ---
     - name: "Test 2: (2,99,50) -> 50"
       id: t2
       uses: classroom-resources/autograding-io-grader@v1
@@ -43,7 +43,7 @@ jobs:
           99
           50
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -58,7 +58,7 @@ jobs:
           50
           99
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -73,7 +73,7 @@ jobs:
           2
           99
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -88,7 +88,7 @@ jobs:
           99
           2
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -103,7 +103,7 @@ jobs:
           2
           50
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -118,11 +118,11 @@ jobs:
           50
           2
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
-    # --- Duplicate cases: two equal lows (median is the low) ---
+    # --- Duplicate cases ---
     - name: "Test 8: (5,5,10) -> 5"
       id: t8
       uses: classroom-resources/autograding-io-grader@v1
@@ -134,7 +134,7 @@ jobs:
           5
           10
         expected-output: "5"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -149,7 +149,7 @@ jobs:
           10
           5
         expected-output: "5"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -164,11 +164,10 @@ jobs:
           5
           5
         expected-output: "5"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
-    # --- Duplicate cases: two equal highs (median is the high) ---
     - name: "Test 11: (10,10,5) -> 10"
       id: t11
       uses: classroom-resources/autograding-io-grader@v1
@@ -180,7 +179,7 @@ jobs:
           10
           5
         expected-output: "10"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -195,7 +194,7 @@ jobs:
           5
           10
         expected-output: "10"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -210,11 +209,10 @@ jobs:
           10
           10
         expected-output: "10"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
-    # --- All equal ---
     - name: "Test 14: (7,7,7) -> 7"
       id: t14
       uses: classroom-resources/autograding-io-grader@v1
@@ -226,11 +224,11 @@ jobs:
           7
           7
         expected-output: "7"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
-    # --- Boundary-focused (1,50,99 -> 50) permutations subset ---
+    # --- Boundary-focused and extras ---
     - name: "Test 15: (1,50,99) -> 50"
       id: t15
       uses: classroom-resources/autograding-io-grader@v1
@@ -242,7 +240,7 @@ jobs:
           50
           99
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -257,7 +255,7 @@ jobs:
           1
           50
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -272,11 +270,10 @@ jobs:
           99
           1
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
-    # --- Adjacent integers around the median ---
     - name: "Test 18: (48,49,50) -> 49"
       id: t18
       uses: classroom-resources/autograding-io-grader@v1
@@ -288,7 +285,7 @@ jobs:
           49
           50
         expected-output: "49"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -303,11 +300,10 @@ jobs:
           49
           48
         expected-output: "49"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
-    # --- Additional mixed/duplicate cases ---
     - name: "Test 20: (13,13,14) -> 13"
       id: t20
       uses: classroom-resources/autograding-io-grader@v1
@@ -319,7 +315,7 @@ jobs:
           13
           14
         expected-output: "13"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -334,7 +330,7 @@ jobs:
           17
           17
         expected-output: "17"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -349,7 +345,7 @@ jobs:
           42
           23
         expected-output: "23"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -364,7 +360,7 @@ jobs:
           77
           88
         expected-output: "88"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
@@ -379,7 +375,7 @@ jobs:
           64
           50
         expected-output: "50"
-        comparison-method: included
+        comparison-method: exact
         timeout: 2
         max-score: 1
 
