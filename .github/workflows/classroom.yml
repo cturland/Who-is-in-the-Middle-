@@ -1,0 +1,414 @@
+name: Autograding Tests – CCC07J1
+on:
+  - push
+  - workflow_dispatch
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # --- Sample from statement ---
+    - name: "Test 1: Sample (10,5,8) -> 8"
+      id: t1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T1
+        command: python3 solution.py
+        input: |
+          10
+          5
+          8
+        expected-output: "8"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    # --- Distinct values: robust permutation coverage (2,99,50 -> 50) ---
+    - name: "Test 2: (2,99,50) -> 50"
+      id: t2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T2
+        command: python3 solution.py
+        input: |
+          2
+          99
+          50
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 3: (2,50,99) -> 50"
+      id: t3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T3
+        command: python3 solution.py
+        input: |
+          2
+          50
+          99
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 4: (50,2,99) -> 50"
+      id: t4
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T4
+        command: python3 solution.py
+        input: |
+          50
+          2
+          99
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 5: (50,99,2) -> 50"
+      id: t5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T5
+        command: python3 solution.py
+        input: |
+          50
+          99
+          2
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 6: (99,2,50) -> 50"
+      id: t6
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T6
+        command: python3 solution.py
+        input: |
+          99
+          2
+          50
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 7: (99,50,2) -> 50"
+      id: t7
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T7
+        command: python3 solution.py
+        input: |
+          99
+          50
+          2
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    # --- Duplicate cases: two equal lows (median is the low) ---
+    - name: "Test 8: (5,5,10) -> 5"
+      id: t8
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T8
+        command: python3 solution.py
+        input: |
+          5
+          5
+          10
+        expected-output: "5"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 9: (5,10,5) -> 5"
+      id: t9
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T9
+        command: python3 solution.py
+        input: |
+          5
+          10
+          5
+        expected-output: "5"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 10: (10,5,5) -> 5"
+      id: t10
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T10
+        command: python3 solution.py
+        input: |
+          10
+          5
+          5
+        expected-output: "5"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    # --- Duplicate cases: two equal highs (median is the high) ---
+    - name: "Test 11: (10,10,5) -> 10"
+      id: t11
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T11
+        command: python3 solution.py
+        input: |
+          10
+          10
+          5
+        expected-output: "10"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 12: (10,5,10) -> 10"
+      id: t12
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T12
+        command: python3 solution.py
+        input: |
+          10
+          5
+          10
+        expected-output: "10"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 13: (5,10,10) -> 10"
+      id: t13
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T13
+        command: python3 solution.py
+        input: |
+          5
+          10
+          10
+        expected-output: "10"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    # --- All equal ---
+    - name: "Test 14: (7,7,7) -> 7"
+      id: t14
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T14
+        command: python3 solution.py
+        input: |
+          7
+          7
+          7
+        expected-output: "7"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    # --- Boundary-focused (1,50,99 -> 50) permutations subset ---
+    - name: "Test 15: (1,50,99) -> 50"
+      id: t15
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T15
+        command: python3 solution.py
+        input: |
+          1
+          50
+          99
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 16: (99,1,50) -> 50"
+      id: t16
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T16
+        command: python3 solution.py
+        input: |
+          99
+          1
+          50
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 17: (50,99,1) -> 50"
+      id: t17
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T17
+        command: python3 solution.py
+        input: |
+          50
+          99
+          1
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    # --- Adjacent integers around the median ---
+    - name: "Test 18: (48,49,50) -> 49"
+      id: t18
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T18
+        command: python3 solution.py
+        input: |
+          48
+          49
+          50
+        expected-output: "49"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 19: (50,49,48) -> 49"
+      id: t19
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T19
+        command: python3 solution.py
+        input: |
+          50
+          49
+          48
+        expected-output: "49"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    # --- Additional mixed/duplicate cases ---
+    - name: "Test 20: (13,13,14) -> 13"
+      id: t20
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T20
+        command: python3 solution.py
+        input: |
+          13
+          13
+          14
+        expected-output: "13"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 21: (42,17,17) -> 17"
+      id: t21
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T21
+        command: python3 solution.py
+        input: |
+          42
+          17
+          17
+        expected-output: "17"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 22: (23,42,23) -> 23"
+      id: t22
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T22
+        command: python3 solution.py
+        input: |
+          23
+          42
+          23
+        expected-output: "23"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 23: (88,77,88) -> 88"
+      id: t23
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T23
+        command: python3 solution.py
+        input: |
+          88
+          77
+          88
+        expected-output: "88"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: "Test 24: (35,64,50) -> 50"
+      id: t24
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: CCC07J1 T24
+        command: python3 solution.py
+        input: |
+          35
+          64
+          50
+        expected-output: "50"
+        comparison-method: included
+        timeout: 2
+        max-score: 1
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        T1_RESULTS: ${{ steps.t1.outputs.result }}
+        T2_RESULTS: ${{ steps.t2.outputs.result }}
+        T3_RESULTS: ${{ steps.t3.outputs.result }}
+        T4_RESULTS: ${{ steps.t4.outputs.result }}
+        T5_RESULTS: ${{ steps.t5.outputs.result }}
+        T6_RESULTS: ${{ steps.t6.outputs.result }}
+        T7_RESULTS: ${{ steps.t7.outputs.result }}
+        T8_RESULTS: ${{ steps.t8.outputs.result }}
+        T9_RESULTS: ${{ steps.t9.outputs.result }}
+        T10_RESULTS: ${{ steps.t10.outputs.result }}
+        T11_RESULTS: ${{ steps.t11.outputs.result }}
+        T12_RESULTS: ${{ steps.t12.outputs.result }}
+        T13_RESULTS: ${{ steps.t13.outputs.result }}
+        T14_RESULTS: ${{ steps.t14.outputs.result }}
+        T15_RESULTS: ${{ steps.t15.outputs.result }}
+        T16_RESULTS: ${{ steps.t16.outputs.result }}
+        T17_RESULTS: ${{ steps.t17.outputs.result }}
+        T18_RESULTS: ${{ steps.t18.outputs.result }}
+        T19_RESULTS: ${{ steps.t19.outputs.result }}
+        T20_RESULTS: ${{ steps.t20.outputs.result }}
+        T21_RESULTS: ${{ steps.t21.outputs.result }}
+        T22_RESULTS: ${{ steps.t22.outputs.result }}
+        T23_RESULTS: ${{ steps.t23.outputs.result }}
+        T24_RESULTS: ${{ steps.t24.outputs.result }}
+      with:
+        runners: t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18,t19,t20,t21,t22,t23,t24
